@@ -19,6 +19,31 @@ struct studentinfo {
     char grade;
 };
 
+//function to etermine the average grade of the student
+void gradecalc(studentinfo& studentinfo, int numTests) {
+    int sum = 0;
+    for (int i = 0; i < numTests; i++) {
+        sum += studentinfo.tests[i];
+    }
+    studentinfo.average = static_cast<double>(sum) / numTests;
+
+    if (studentinfo.average >= 91) {
+        studentinfo.grade = 'A';
+    }
+    else if (studentinfo.average >= 81) {
+        studentinfo.grade = 'B';
+    }
+    else if (studentinfo.average >= 71) {
+        studentinfo.grade = 'C';
+    }
+    else if (studentinfo.average >= 61) {
+        studentinfo.grade = 'D';
+    }
+    else {
+        studentinfo.grade = 'F';
+    }
+}
+
 int main()
 {
     std::cout << "Hello World!\n";
