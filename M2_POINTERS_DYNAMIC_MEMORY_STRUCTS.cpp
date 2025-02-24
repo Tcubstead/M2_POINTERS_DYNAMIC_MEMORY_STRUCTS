@@ -20,7 +20,7 @@ struct studentinfo {
 };
 
 //function to etermine the average grade of the student
-void gradecalc(studentinfo& studentinfo, int numTests) {
+void gradeCalc(studentinfo& studentinfo, int numTests) {
     int sum = 0;
     for (int i = 0; i < numTests; i++) {
         sum += studentinfo.tests[i];
@@ -44,9 +44,48 @@ void gradecalc(studentinfo& studentinfo, int numTests) {
     }
 }
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main() {
+    ifstream inputFile("students.txt");
+
+    if (!inputFile) {
+        cerr << "error opening file" << endl;
+        return 1;
+    }
+
+    int numStudents, numTests;
+    inputFile >> numStudents >> numTests;
+
+    studentinfo* students = new studentinfo[numStudents];
+
+    for (int i = 0; i < numStudents; ++i) {
+        inputFile >> students[i].name >> students[i].idnum;
+
+        students[i].tests = new int[numTests];
+
+        for (int j = 0; j < numTests; ++j) {
+            inputFile >> students[i].tests[j];
+        }
+        gradeCalc(students[i], numTests);
+    }
+    inputFile.close();
+
+    cout << left << setw(15) << "name"
+        << setw(10) << "id number"
+        << setw(15) << "average score"
+        << "grade" << endl;
+    cout << "-------------------------------------------------" << endl;
+
+    for (int i = 0; i < numStudents; ++i) {
+        cout << setw(15) << students[i].name
+            << setw(10) << students[i].idnum
+            << setw(15) << fixed << setprecision(2) << students[i].average
+            << students[i].grade << endl;
+
+        delete[] students[i].tests;
+    }
+    delete[] students;
+
+    return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
