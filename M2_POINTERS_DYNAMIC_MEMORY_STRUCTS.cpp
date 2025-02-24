@@ -10,7 +10,14 @@
 #include <string>
 using namespace std;
 
-
+//struct for student info
+struct studentinfo {
+    string name;
+    int idnum;
+    int* tests;
+    double average;
+    char grade;
+};
 
 int main()
 {
