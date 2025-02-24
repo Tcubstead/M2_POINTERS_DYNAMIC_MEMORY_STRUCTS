@@ -47,6 +47,7 @@ void gradeCalc(studentinfo& studentinfo, int numTests) {
 int main() {
     ifstream inputFile("students.txt");
 
+    //file validation
     if (!inputFile) {
         cerr << "error opening file" << endl;
         return 1;
@@ -57,6 +58,7 @@ int main() {
 
     studentinfo* students = new studentinfo[numStudents];
 
+    //read info from the selected file
     for (int i = 0; i < numStudents; ++i) {
         inputFile >> students[i].name >> students[i].idnum;
 
@@ -69,6 +71,7 @@ int main() {
     }
     inputFile.close();
 
+    //table display of student info
     cout << left << setw(15) << "name"
         << setw(10) << "id number"
         << setw(15) << "average score"
