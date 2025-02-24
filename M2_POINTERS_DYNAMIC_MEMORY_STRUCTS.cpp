@@ -1,9 +1,16 @@
 //Thomas Cubstead
 //2/24/25
 //M2_POINTERS_DYNAMIC_MEMORY_STRUCTS
-//main
+//course_Grade
+//this program uses structs to dynamically store student grade information based on given info in a file
 
 #include <iostream>
+#include <fstream>
+#include <iomanip>
+#include <string>
+using namespace std;
+
+
 
 int main()
 {
