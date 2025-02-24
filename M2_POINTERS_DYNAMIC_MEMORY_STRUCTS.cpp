@@ -1,6 +1,7 @@
-// M2_POINTERS_DYNAMIC_MEMORY_STRUCTS.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//Thomas Cubstead
+//2/24/25
+//M2_POINTERS_DYNAMIC_MEMORY_STRUCTS
 //main
-//
 
 #include <iostream>
 
