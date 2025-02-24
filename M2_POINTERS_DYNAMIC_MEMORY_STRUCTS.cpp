@@ -1,13 +1,41 @@
 //Thomas Cubstead
 //2/24/25
 //M2_POINTERS_DYNAMIC_MEMORY_STRUCTS
-//main
+//reverse_Array
+//this program creates an array and a reversed copy of it with a pointer leading to the reversed copy and has an example program that runs the function
 
 #include <iostream>
+using namespace std;
 
-int main()
-{
-    std::cout << "Hello World!\n";
+//this function reverses the array
+int* reverseArray(int* arr, int size) {
+    int* reverseA = new int[size];
+
+        //reverses the array
+        for (int i = 0; i < size; i++) {
+            reverseA[i] = arr[size - 1 - i];
+    }
+    return reverseA;
+}
+
+int main() {
+    //example program
+    int arr[] = { 1,3,5,7,9 };
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+        int* reverseA = reverseArray(arr, size);
+
+        //output
+        cout << "reversed version of the array: ";
+        for (int i = 0; i < size; i++) {
+            cout << reverseA[i] << " ";
+        }
+        cout << endl;
+
+        //deallocates memory
+        delete[] reverseA;
+
+        return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
